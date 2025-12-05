@@ -1,0 +1,34 @@
+@model SistemaEmpleados.Models.Departamento
+
+@{
+    ViewBag.Title = "Crear Departamento - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Crear Nuevo Departamento</h1>
+</div>
+
+<div class="form-container">
+    @using (Html.BeginForm("Create", "Departamento", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Nombre del Departamento *</label>
+            @Html.TextBoxFor(m => m.Nombre)
+            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Descripción</label>
+            @Html.TextAreaFor(m => m.Descripcion)
+            @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Guardar Departamento</button>
+            <a href="/Departamento" class="btn btn-secondary">Cancelar</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,49 @@
+@model SistemaEmpleados.Models.Empleado
+
+@{
+    ViewBag.Title = "Eliminar Empleado - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Eliminar Empleado</h1>
+</div>
+
+<div class="form-container">
+    <div class="alert alert-warning">
+        <strong>⚠️ Advertencia:</strong> Está a punto de eliminar al empleado <strong>@Model.Nombre</strong>. Esta acción no se puede deshacer.
+    </div>
+
+    <table style="margin-bottom: 20px;">
+        <tr>
+            <td><strong>ID:</strong></td>
+            <td>@Model.EmpleadoID</td>
+        </tr>
+        <tr>
+            <td><strong>Nombre:</strong></td>
+            <td>@Model.Nombre</td>
+        </tr>
+        <tr>
+            <td><strong>Departamento:</strong></td>
+            <td>@(Model.Departamento?.Nombre ?? "N/A")</td>
+        </tr>
+        <tr>
+            <td><strong>Cargo:</strong></td>
+            <td>@(Model.Cargo?.Nombre ?? "N/A")</td>
+        </tr>
+        <tr>
+            <td><strong>Salario:</strong></td>
+            <td>RD$ @Model.Salario.ToString("F2")</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm("Delete", "Empleado", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+            <a href="/Empleado" class="btn btn-secondary">Cancelar</a>
+        </div>
+    }
+</div>

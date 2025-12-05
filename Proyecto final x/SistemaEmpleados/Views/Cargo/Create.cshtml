@@ -1,0 +1,47 @@
+@model SistemaEmpleados.Models.Cargo
+
+@{
+    ViewBag.Title = "Crear Cargo - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Crear Nuevo Cargo</h1>
+</div>
+
+<div class="form-container">
+    @using (Html.BeginForm("Create", "Cargo", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Nombre del Cargo *</label>
+            @Html.TextBoxFor(m => m.Nombre)
+            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Descripción</label>
+            @Html.TextAreaFor(m => m.Descripcion)
+            @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Nivel de Experiencia *</label>
+            @Html.DropDownListFor(m => m.NivelExperiencia, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "-- Seleccionar Nivel --", Value = "" },
+                new SelectListItem { Text = "Junior", Value = "Junior" },
+                new SelectListItem { Text = "Intermedio", Value = "Intermedio" },
+                new SelectListItem { Text = "Senior", Value = "Senior" },
+                new SelectListItem { Text = "Experto", Value = "Experto" }
+            })
+            @Html.ValidationMessageFor(m => m.NivelExperiencia, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Guardar Cargo</button>
+            <a href="/Cargo" class="btn btn-secondary">Cancelar</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,71 @@
+@model IEnumerable<SistemaEmpleados.Models.Empleado>
+
+@{
+    ViewBag.Title = "Empleados - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Gestión de Empleados</h1>
+</div>
+
+<div class="btn-group">
+    <a href="/Empleado/Create" class="btn btn-primary">+ Agregar Nuevo Empleado</a>
+    <a href="/Empleado/Exportar" class="btn btn-secondary">📥 Exportar a CSV</a>
+</div>
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-warning">
+        No hay empleados registrados. <a href="/Empleado/Create">Crear el primer empleado</a>
+    </div>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Departamento</th>
+                <th>Cargo</th>
+                <th>Fecha Inicio</th>
+                <th>Salario</th>
+                <th>Estado</th>
+                <th>Tiempo en Empresa</th>
+                <th>AFP</th>
+                <th>ARS</th>
+                <th>ISR</th>
+                <th>Salario Neto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.EmpleadoID</td>
+                    <td>@empleado.Nombre</td>
+                    <td>@(empleado.Departamento?.Nombre ?? "N/A")</td>
+                    <td>@(empleado.Cargo?.Nombre ?? "N/A")</td>
+                    <td>@empleado.FechaInicio.ToString("dd/MM/yyyy")</td>
+                    <td>RD$ @empleado.Salario.ToString("F2")</td>
+                    <td>
+                        <span style="padding: 5px 10px; border-radius: 4px; @(empleado.Estado == "Vigente" ? "background-color: #d4edda; color: #155724;" : "background-color: #f8d7da; color: #721c24;")">
+                            @empleado.Estado
+                        </span>
+                    </td>
+                    <td>@empleado.TiempoEmpresa</td>
+                    <td>RD$ @empleado.AFP.ToString("F2")</td>
+                    <td>RD$ @empleado.ARS.ToString("F2")</td>
+                    <td>RD$ @empleado.ISR.ToString("F2")</td>
+                    <td>RD$ @empleado.SalarioNeto.ToString("F2")</td>
+                    <td class="acciones">
+                        <a href="/Empleado/Edit/@empleado.EmpleadoID" class="btn btn-warning btn-small">Editar</a>
+                        <a href="/Empleado/Delete/@empleado.EmpleadoID" class="btn btn-danger btn-small">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

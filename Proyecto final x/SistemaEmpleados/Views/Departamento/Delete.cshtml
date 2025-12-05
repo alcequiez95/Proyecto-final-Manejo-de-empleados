@@ -1,0 +1,41 @@
+@model SistemaEmpleados.Models.Departamento
+
+@{
+    ViewBag.Title = "Eliminar Departamento - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Eliminar Departamento</h1>
+</div>
+
+<div class="form-container">
+    <div class="alert alert-warning">
+        <strong>⚠️ Advertencia:</strong> Está a punto de eliminar el departamento <strong>@Model.Nombre</strong>. Esta acción no se puede deshacer.
+    </div>
+
+    <table style="margin-bottom: 20px;">
+        <tr>
+            <td><strong>ID:</strong></td>
+            <td>@Model.DepartamentoID</td>
+        </tr>
+        <tr>
+            <td><strong>Nombre:</strong></td>
+            <td>@Model.Nombre</td>
+        </tr>
+        <tr>
+            <td><strong>Descripción:</strong></td>
+            <td>@(string.IsNullOrEmpty(Model.Descripcion) ? "Sin descripción" : Model.Descripcion)</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm("Delete", "Departamento", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+            <a href="/Departamento" class="btn btn-secondary">Cancelar</a>
+        </div>
+    }
+</div>

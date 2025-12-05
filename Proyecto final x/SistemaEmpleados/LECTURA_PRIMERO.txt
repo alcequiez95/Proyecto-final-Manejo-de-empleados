@@ -1,0 +1,363 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   SISTEMA DE MANEJO DE EMPLEADOS - ASP.NET MVC             ║
+║                         PROYECTO FINAL INF-4313                             ║
+║                        Completado el 12/11/2025                             ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🎯 ¿QUÉ ES ESTE PROYECTO?
+═══════════════════════════════════════════════════════════════════════════════
+
+Es una aplicación web profesional desarrollada en ASP.NET MVC que permite:
+
+1. Gestionar empleados de una empresa
+2. Organizar departamentos y cargos
+3. Calcular automáticamente descuentos (AFP, ARS, ISR)
+4. Exportar datos a archivos CSV
+5. Validar datos para evitar errores
+
+Toda la información se guarda en una base de datos SQL Server.
+
+═══════════════════════════════════════════════════════════════════════════════
+📋 CONTENIDO DEL PROYECTO
+═══════════════════════════════════════════════════════════════════════════════
+
+Carpeta: c:\Users\Tre3m\OneDrive\Desktop\Prog III\Proyecto final x\SistemaEmpleados
+
+Incluye:
+
+✓ Código fuente completo (C# y HTML/CSS)
+✓ Modelos de datos (Empleado, Departamento, Cargo)
+✓ Controladores para cada entidad
+✓ Vistas (formularios y listados)
+✓ Utilidades para exportación y validación
+✓ Configuración de base de datos
+✓ Documentación completa
+
+═══════════════════════════════════════════════════════════════════════════════
+🚀 INICIO RÁPIDO (5 PASOS)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ABRIR VISUAL STUDIO
+   └─ Abre Visual Studio 2019 o superior como Administrador
+
+2. ABRIR PROYECTO
+   └─ File → Open → Folder
+   └─ Navega a: c:\Users\Tre3m\OneDrive\Desktop\Prog III\Proyecto final x
+   └─ Selecciona la carpeta SistemaEmpleados
+
+3. INSTALAR DEPENDENCIAS
+   └─ Ve a Tools → NuGet Package Manager → Package Manager Console
+   └─ Ejecuta: Install-Package EntityFramework
+
+4. CREAR BASE DE DATOS
+   └─ En Package Manager Console, ejecuta en orden:
+   
+      Enable-Migrations
+      Add-Migration InitialCreate
+      Update-Database
+
+5. EJECUTAR APLICACIÓN
+   └─ Presiona F5 para ejecutar
+   └─ La aplicación abrirá en el navegador automáticamente
+
+═══════════════════════════════════════════════════════════════════════════════
+📖 ARCHIVOS IMPORTANTES
+═══════════════════════════════════════════════════════════════════════════════
+
+📄 README.md
+   → Descripción general de todas las características
+   → Estructura del proyecto
+   → Requerimientos técnicos
+
+📄 INSTALACION.md
+   → Guía paso a paso para instalar y configurar
+   → Solución de problemas comunes
+   → Requisitos del sistema
+
+📄 CONFIG_BD.md
+   → Instrucciones detalladas para configurar la base de datos
+   → Comandos específicos de Entity Framework
+   → Verificación de la BD
+
+📄 RESUMEN_PROYECTO.txt
+   → Resumen ejecutivo completo
+   → Cumplimiento de requerimientos
+   → Características implementadas
+
+═══════════════════════════════════════════════════════════════════════════════
+🎨 CARACTERÍSTICAS PRINCIPALES
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ GESTIÓN DE EMPLEADOS
+   ✓ Crear empleado
+   ✓ Editar empleado
+   ✓ Eliminar empleado
+   ✓ Ver lista de empleados
+   ✓ Exportar a CSV
+
+   Información incluida:
+   • ID único del empleado
+   • Nombre
+   • Departamento (asignado)
+   • Cargo (asignado)
+   • Fecha de inicio
+   • Salario
+   • Estado (Vigente/No Vigente)
+   • Tiempo en la empresa (calculado automáticamente)
+   • AFP - 3% del salario (calculado automáticamente)
+   • ARS - 3.04% del salario (calculado automáticamente)
+   • ISR - Impuesto sobre la Renta (calculado automáticamente)
+   • Salario Neto (calculado automáticamente)
+
+✨ GESTIÓN DE DEPARTAMENTOS
+   ✓ Crear departamento
+   ✓ Editar departamento
+   ✓ Eliminar departamento
+   ✓ Ver lista de departamentos
+   ✓ Exportar a CSV
+
+✨ GESTIÓN DE CARGOS
+   ✓ Crear cargo
+   ✓ Editar cargo
+   ✓ Eliminar cargo
+   ✓ Ver lista de cargos
+   ✓ Exportar a CSV
+
+✨ VALIDACIONES
+   ✓ ID empleado no puede repetirse
+   ✓ Fecha de inicio no puede ser en el futuro
+   ✓ Salario debe ser mayor a 0
+   ✓ No se pueden eliminar departamentos/cargos con empleados
+   ✓ Todos los campos obligatorios requieren datos
+
+═══════════════════════════════════════════════════════════════════════════════
+💼 CÓMO USAR LA APLICACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 1: Ir a la página de Inicio
+   → Se mostrará un menú con 3 opciones: Empleados, Departamentos, Cargos
+
+PASO 2: Crear Departamentos (primero)
+   → Click en "Departamentos"
+   → Click en "+ Agregar Nuevo Departamento"
+   → Ingresa ID y Nombre
+   → Click en "Guardar Departamento"
+   → Ejemplos: IT, Recursos Humanos, Ventas
+
+PASO 3: Crear Cargos (segundo)
+   → Click en "Cargos"
+   → Click en "+ Agregar Nuevo Cargo"
+   → Ingresa ID, Nombre y Nivel de Experiencia
+   → Click en "Guardar Cargo"
+   → Ejemplos: Desarrollador (Junior), Gerente (Senior), Analista (Intermedio)
+
+PASO 4: Crear Empleados (tercero)
+   → Click en "Empleados"
+   → Click en "+ Agregar Nuevo Empleado"
+   → Ingresa:
+     • ID (único)
+     • Nombre
+     • Departamento (selecciona de la lista)
+     • Cargo (selecciona de la lista)
+     • Fecha de Inicio
+     • Salario
+     • Estado
+   → Click en "Guardar Empleado"
+   → Los cálculos se generan automáticamente
+
+PASO 5: Ver Resultados
+   → Verás la lista de empleados con todos los cálculos
+   → AFP, ARS, ISR y Salario Neto se calculan automáticamente
+   → Tiempo en empresa se calcula en años y meses
+
+PASO 6: Exportar a CSV
+   → En cualquier lista (Empleados, Departamentos, Cargos)
+   → Click en "📥 Exportar a CSV"
+   → Se descargará un archivo CSV con todos los datos
+
+PASO 7: Editar o Eliminar
+   → En cualquier lista, hay botones "Editar" y "Eliminar"
+   → Al eliminar, pide confirmación
+   → Los cambios se guardan inmediatamente
+
+═══════════════════════════════════════════════════════════════════════════════
+⚙️ CONFIGURACIÓN TÉCNICA
+═══════════════════════════════════════════════════════════════════════════════
+
+Tecnologías Utilizadas:
+• Lenguaje: C# 
+• Framework: ASP.NET MVC 5
+• ORM: Entity Framework 6
+• Base de Datos: SQL Server 2019+
+• Servidor: IIS Express (Visual Studio)
+• Frontend: HTML5, CSS3
+
+Estructura del Código:
+• Modelos: Clases que representan datos
+• Controladores: Lógica de negocio
+• Vistas: Interfaz de usuario (formularios)
+• Contexto: Conexión a base de datos
+• Utilidades: Funciones auxiliares
+
+Base de Datos:
+• Servidor: DESKTOP-7VTD5RN
+• Nombre: SistemaEmpleados (se crea automáticamente)
+• Tablas: Empleados, Departamentos, Cargos
+
+═══════════════════════════════════════════════════════════════════════════════
+🔒 VALIDACIONES Y SEGURIDAD
+═══════════════════════════════════════════════════════════════════════════════
+
+La aplicación valida:
+
+✓ ID únicos (no permite empleados con mismo ID)
+✓ Campos obligatorios (requiere todos los datos)
+✓ Formato de fechas (no permite fechas inválidas)
+✓ Fechas futuras (no permite fecha de inicio en el futuro)
+✓ Valores numéricos (no permite salarios negativos)
+✓ Integridad referencial (no elimina registros con dependencias)
+✓ Entrada de usuario (previene inyección SQL)
+
+Manejo de Errores:
+✓ Mensajes claros al usuario
+✓ Prevención de cierre inesperado de la aplicación
+✓ Registros de errores
+✓ Recuperación ante fallos
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 EJEMPLO PRÁCTICO COMPLETO
+═══════════════════════════════════════════════════════════════════════════════
+
+Supongamos que tienes los siguientes datos:
+
+DEPARTAMENTO:
+├─ ID: 1
+├─ Nombre: Tecnología
+└─ Descripción: Departamento de IT
+
+CARGO:
+├─ ID: 1
+├─ Nombre: Programador
+├─ Descripción: Desarrollo de software
+└─ Nivel Experiencia: Senior
+
+EMPLEADO:
+├─ ID: 1001
+├─ Nombre: Carlos Martínez
+├─ Departamento: Tecnología
+├─ Cargo: Programador
+├─ Fecha Inicio: 01/01/2020
+├─ Salario: RD$ 45,000
+└─ Estado: Vigente
+
+CÁLCULOS AUTOMÁTICOS RESULTANTES:
+├─ Tiempo en empresa: 4 años y 11 meses
+├─ AFP (3%): RD$ 1,350.00
+├─ ARS (3.04%): RD$ 1,368.00
+├─ ISR: RD$ 3,025.00 (según escala)
+└─ Salario Neto: RD$ 39,257.00
+
+═══════════════════════════════════════════════════════════════════════════════
+❓ PREGUNTAS FRECUENTES
+═══════════════════════════════════════════════════════════════════════════════
+
+P: ¿Necesito instalar algo adicional?
+R: Sí, EntityFramework (se instala automáticamente con los comandos indicados)
+
+P: ¿Se perderán los datos al cerrar la aplicación?
+R: No, todos los datos se guardan en la base de datos SQL Server
+
+P: ¿Puedo editar empleados después de crearlos?
+R: Sí, cada lista tiene un botón "Editar" para modificar los datos
+
+P: ¿Qué pasa si elimino un departamento?
+R: No se puede eliminar si tiene empleados asignados
+
+P: ¿Cómo exporto los datos?
+R: Cada lista tiene un botón "📥 Exportar a CSV" que descarga un archivo
+
+P: ¿Dónde se guardan los archivos CSV exportados?
+R: En la carpeta "Exports" dentro del proyecto
+
+P: ¿Puedo cambiar los porcentajes de AFP y ARS?
+R: Sí, edita el archivo Empleado.cs en la carpeta Models
+
+P: ¿La aplicación funciona sin conexión a internet?
+R: Sí, funciona completamente offline (excepto para el navegador)
+
+═══════════════════════════════════════════════════════════════════════════════
+🆘 SOLUCIÓN DE PROBLEMAS
+═══════════════════════════════════════════════════════════════════════════════
+
+PROBLEMA: "Error de conexión a SQL Server"
+SOLUCIÓN:
+1. Verifica que SQL Server esté ejecutándose
+2. Comprueba el nombre del servidor (DESKTOP-7VTD5RN)
+3. En SQL Server Management Studio, intenta conectarte manualmente
+
+PROBLEMA: "No se encuentran las clases del proyecto"
+SOLUCIÓN:
+1. Cierra Visual Studio
+2. Elimina la carpeta "bin" y "obj"
+3. Vuelve a abrir Visual Studio
+4. Reconstruye la solución (Build → Rebuild Solution)
+
+PROBLEMA: "La página no carga"
+SOLUCIÓN:
+1. Verifica que IIS Express esté ejecutándose
+2. Presiona F5 para reiniciar la depuración
+3. Si persiste, reinicia Visual Studio
+
+PROBLEMA: "Las migraciones no funcionan"
+SOLUCIÓN:
+En Package Manager Console:
+Drop-Database -Force
+Enable-Migrations -Force
+Add-Migration InitialCreate
+Update-Database
+
+PROBLEMA: "No se pueden ver los cambios"
+SOLUCIÓN:
+1. Reconstruye la solución
+2. Limpia la caché del navegador (Ctrl+Shift+Delete)
+3. Reinicia la aplicación
+
+═══════════════════════════════════════════════════════════════════════════════
+📞 INFORMACIÓN DE CONTACTO
+═══════════════════════════════════════════════════════════════════════════════
+
+Proyecto: Sistema de Manejo de Empleados
+Asignatura: INF-4313
+Período: 2025
+Institución: Universidad (Especificar)
+
+Requiere configuración de:
+• SQL Server en: DESKTOP-7VTD5RN
+• Usuario: mi_usuario_admin
+
+═══════════════════════════════════════════════════════════════════════════════
+✨ RESUMEN DE LO QUE RECIBISTE
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Proyecto ASP.NET MVC completo y funcional
+✓ 3 modelos de datos (Empleado, Departamento, Cargo)
+✓ 4 controladores con todas las operaciones CRUD
+✓ 13 vistas (formularios y listados)
+✓ Exportación a CSV funcionando
+✓ Validaciones completas de datos
+✓ Manejo robusto de errores
+✓ Base de datos con migraciones automáticas
+✓ Interfaz profesional y responsiva
+✓ Cálculos automáticos (AFP, ARS, ISR, Tiempo)
+✓ Documentación completa en español
+✓ Instrucciones paso a paso
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¡EL PROYECTO ESTÁ LISTO PARA USAR!
+
+Sigue los 5 pasos de "INICIO RÁPIDO" para comenzar.
+
+¡Éxito en tu proyecto!
+
+═══════════════════════════════════════════════════════════════════════════════

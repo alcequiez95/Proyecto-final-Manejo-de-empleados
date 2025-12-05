@@ -1,0 +1,51 @@
+@model SistemaEmpleados.Models.Cargo
+
+@{
+    ViewBag.Title = "Editar Cargo - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Editar Cargo</h1>
+</div>
+
+<div class="form-container">
+    @using (Html.BeginForm("Edit", "Cargo", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>ID del Cargo *</label>
+            @Html.TextBoxFor(m => m.CargoID, new { @type = "number", @readonly = "readonly" })
+        </div>
+
+        <div class="form-group">
+            <label>Nombre del Cargo *</label>
+            @Html.TextBoxFor(m => m.Nombre)
+            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Descripción</label>
+            @Html.TextAreaFor(m => m.Descripcion)
+            @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Nivel de Experiencia *</label>
+            @Html.DropDownListFor(m => m.NivelExperiencia, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Junior", Value = "Junior", Selected = Model.NivelExperiencia == "Junior" },
+                new SelectListItem { Text = "Intermedio", Value = "Intermedio", Selected = Model.NivelExperiencia == "Intermedio" },
+                new SelectListItem { Text = "Senior", Value = "Senior", Selected = Model.NivelExperiencia == "Senior" },
+                new SelectListItem { Text = "Experto", Value = "Experto", Selected = Model.NivelExperiencia == "Experto" }
+            })
+            @Html.ValidationMessageFor(m => m.NivelExperiencia, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            <a href="/Cargo" class="btn btn-secondary">Cancelar</a>
+        </div>
+    }
+</div>

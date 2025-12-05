@@ -1,0 +1,62 @@
+@model SistemaEmpleados.Models.Empleado
+
+@{
+    ViewBag.Title = "Crear Empleado - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Crear Nuevo Empleado</h1>
+</div>
+
+<div class="form-container">
+    @using (Html.BeginForm("Create", "Empleado", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Nombre del Empleado *</label>
+            @Html.TextBoxFor(m => m.Nombre)
+            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Departamento *</label>
+            @Html.DropDownListFor(m => m.DepartamentoID, ViewBag.DepartamentoID as SelectList, "-- Seleccionar Departamento --")
+            @Html.ValidationMessageFor(m => m.DepartamentoID, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Cargo *</label>
+            @Html.DropDownListFor(m => m.CargoID, ViewBag.CargoID as SelectList, "-- Seleccionar Cargo --")
+            @Html.ValidationMessageFor(m => m.CargoID, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de Inicio *</label>
+            @Html.TextBoxFor(m => m.FechaInicio, new { @type = "date" })
+            @Html.ValidationMessageFor(m => m.FechaInicio, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Salario *</label>
+            @Html.TextBoxFor(m => m.Salario, new { @type = "number", @step = "0.01", @min = "0" })
+            @Html.ValidationMessageFor(m => m.Salario, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <label>Estado *</label>
+            @Html.DropDownListFor(m => m.Estado, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Vigente", Value = "Vigente" },
+                new SelectListItem { Text = "No Vigente", Value = "No Vigente" }
+            })
+            @Html.ValidationMessageFor(m => m.Estado, "", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Guardar Empleado</button>
+            <a href="/Empleado" class="btn btn-secondary">Cancelar</a>
+        </div>
+    }
+</div>

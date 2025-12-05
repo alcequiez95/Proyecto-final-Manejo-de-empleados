@@ -1,0 +1,29 @@
+@{
+    ViewBag.Title = "Inicio - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Sistema de Manejo de Empleados</h1>
+    <p>Gestiona empleados, departamentos y cargos de forma eficiente</p>
+</div>
+
+<div class="menu-principal">
+    <div class="menu-card">
+        <h3>👥 Empleados</h3>
+        <p>Administra la información de los empleados de tu empresa</p>
+        <a href="/Empleado" class="btn btn-primary">Ir a Empleados</a>
+    </div>
+
+    <div class="menu-card">
+        <h3>🏢 Departamentos</h3>
+        <p>Gestiona los departamentos de la organización</p>
+        <a href="/Departamento" class="btn btn-success">Ir a Departamentos</a>
+    </div>
+
+    <div class="menu-card">
+        <h3>💼 Cargos</h3>
+        <p>Administra los cargos disponibles en la empresa</p>
+        <a href="/Cargo" class="btn btn-warning">Ir a Cargos</a>
+    </div>
+</div>

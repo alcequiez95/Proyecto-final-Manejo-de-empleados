@@ -1,0 +1,53 @@
+@model IEnumerable<SistemaEmpleados.Models.Cargo>
+
+@{
+    ViewBag.Title = "Cargos - Sistema de Manejo de Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Gestión de Cargos</h1>
+</div>
+
+<div class="btn-group">
+    <a href="/Cargo/Create" class="btn btn-primary">+ Agregar Nuevo Cargo</a>
+    <a href="/Cargo/Exportar" class="btn btn-secondary">📥 Exportar a CSV</a>
+</div>
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-warning">
+        No hay cargos registrados. <a href="/Cargo/Create">Crear el primer cargo</a>
+    </div>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Nivel de Experiencia</th>
+                <th>Fecha Creación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cargo in Model)
+            {
+                <tr>
+                    <td>@cargo.CargoID</td>
+                    <td>@cargo.Nombre</td>
+                    <td>@(string.IsNullOrEmpty(cargo.Descripcion) ? "Sin descripción" : cargo.Descripcion)</td>
+                    <td>@cargo.NivelExperiencia</td>
+                    <td>@cargo.FechaCreacion.ToString("dd/MM/yyyy")</td>
+                    <td class="acciones">
+                        <a href="/Cargo/Edit/@cargo.CargoID" class="btn btn-warning btn-small">Editar</a>
+                        <a href="/Cargo/Delete/@cargo.CargoID" class="btn btn-danger btn-small">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
